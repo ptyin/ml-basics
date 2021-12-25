@@ -1,3 +1,10 @@
+## Download & Read
+```shell
+git clone https://github.com/PTYin/ml-basics.git
+```
+- Strongly recommend you to read markdown notes in [Typora](https://typora.io/).
+
+## Contents
 - [x] Linear Regression [[Notes](Regression.md)]
 - [x] Logistic Regression [[Notes](Logistic.md)]
 - [x] Bayesian Statistics and Regularization [[Notes](Regularization.md)]
