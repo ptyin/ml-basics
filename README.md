@@ -1,0 +1,8 @@
+- [x] Linear Regression [[Notes](Regression.md)]
+- [x] Logistic Regression [[Notes](Logistic.md)]
+- [x] Bayesian Statistics and Regularization [[Notes](Regularization.md)]
+- [x] Gaussian Discriminant Analysis, Naive Bayes and EM Algorithm [[Notes](NaiveBayes.md)]
+- [ ] Support Vector Machine [[Notes](SVM.md)]
+- [ ] K-Means [[Notes]()]
+- [ ] Factor Analysis and Principle Component Analysis [[Notes]()]
+- [ ] Learning Theory [[Notes]()]
