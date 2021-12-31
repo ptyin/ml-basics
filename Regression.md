@@ -90,7 +90,7 @@ $$
 \left[\begin{array}{ccc}
 \frac{\partial f}{\partial A_{11}}& \cdots & \frac{\partial f}{\partial A_{n}}\\
 \vdots & \ddots & \vdots \\
-\frac{\partial f}{\partial A_{m1}}& \ddots & \frac{\partial f}{\partial A_{mn}}\\
+\frac{\partial f}{\partial A_{m1}}& \cdots & \frac{\partial f}{\partial A_{mn}}\\
 \end{array}\right]
 $$
 
@@ -132,7 +132,7 @@ y^{(1)} \\
 \vdots \\
 y^{(m)}
 \end{array}\right] \\
-J(\theta)=\sum_{i=1}^m{(\theta^Tx^{(i)}-y^{(i)})x_j^{(i)}}=\frac12(X\theta-Y)^T(X\theta-Y)
+J(\theta)=\frac12\sum_{i=1}^m{(\theta^Tx^{(i)}-y^{(i)})^2}=\frac12(X\theta-Y)^T(X\theta-Y)
 $$
 
 - Minimize $J(\theta)=\frac12(Y-X\theta)^T(Y-X\theta)$
