@@ -16,5 +16,5 @@ git clone https://github.com/PTYin/ml-basics.git
 
 ## Apendix
 
-- [ ] Optimization [[Notes](Optimization.md)]
+- [x] Optimization [[Notes](Optimization.md)]
 
