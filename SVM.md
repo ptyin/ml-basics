@@ -35,120 +35,27 @@ $$
 > \end{array}
 > $$
 
-## Convex Optimization
-
-$$
-\begin{array}{ll}
-\min_\omega & f(\omega) \\
-s.t. & g_i(\omega)\le0 & i=1,\cdots,k \\
-& h_j(\omega)=0 & j=1,\cdots,l
-\end{array}
-$$
-
-- *Lagrangian* (Lagrange function) of the above optimization.
-
-$$
-\mathcal{L}(\omega,\alpha,\beta)=f(\omega)+\sum_{i=1}^k\alpha_ig_i(\omega)+\sum_{j=1}^l\beta_jh_j(\omega)
-$$
-
-- $\alpha_i,\beta_j$ are Lagrange multiplier, $\alpha_i\ge0$.
-- Lagrange dual function $\mathcal{G}:\mathbb{R}^k\times\mathbb{R}^l\rightarrow\mathbb{R}$ as an infimum (下确界) of $\mathcal{L}$ with respect to $\omega$.
-
-$$
-\begin{aligned}
-\mathcal{G}(\alpha, \beta) &=\inf _{\omega \in \mathcal{D}} \mathcal{L}(\omega, \alpha, \beta) \\
-&=\inf _{\omega \in \mathcal{D}}\left(f(\omega)+\sum_{i=1}^{k} \alpha_{i} g_{i}(\omega)+\sum_{j=1}^{l} \beta_{j} h_{j}(\omega)\right)
-\end{aligned}
-$$
-
-> Theorem. **Lower Bounds Property**
->
-> If $\alpha\ge0$, then $\mathcal{G}(\alpha,\beta)\le p^*$ where $p^*$ is the optimal value of the (original) primal problem.
-
-- The Lagrange dual function provides a non-trivial lower bound to the primal optimization problem.
-- The *Lagrange dual problem* with respect to the primal problem. The optimal value is $d^*$, and $d^*\le p^*$.
-
-$$
-\begin{array}{ll}
-\max_{\alpha,\beta} & \mathcal{G}(\alpha,\beta) \\
-s.t. & \alpha\ge0 & \forall i=1,\cdots,k
-\end{array}
-$$
-
-### Karush-Kuhn-Tucker (KKT) Conditions
-
-- Let $\omega^*$ be a primal optimal point and $(\alpha^*, \beta^*)$ be a dual optimal solution.
-
-> Theorem. **Complementary Slackness** (互补松弛)
->
-> If strong duality holds, then $\alpha_i^*g_i(\omega^*)=0,\ \forall i=1,2,\cdots,k.$
-
-- Since $\omega^*$ is the minimizer of $\mathcal{L}(\omega,\alpha^*,\beta^*)$ over $\omega$.
-
-> Def. **Stationarity Condition**
-> $$
-> \nabla f\left(\omega^{*}\right)+\sum_{i=1}^{k} \alpha_{i}^{*} \nabla g_{i}\left(\omega^{*}\right)+\sum_{j=1}^{l} \beta_{j}^{*} \nabla h_{j}\left(\omega^{*}\right)=0
-> $$
-
-- The primal feasibility conditions and the dual feasibility condition holds:
-
-$$
-\begin{aligned}
-&g_{i}\left(\omega^{*}\right) \leq 0, \forall i=1, \cdots, k \\
-&h_{j}\left(\omega^{*}\right)=0, \forall j=1, \cdots, l \\
-&\alpha_{i}^{*} \geq 0, \forall i=1, \cdots, k
-\end{aligned}
-$$
-
-- Altogether, these conditions formulate the KKT conditions
-
-$$
-\begin{aligned}
-& \alpha_i^*g_i(\omega^*)=0,\ \forall i=1,2,\cdots,k. \\
-& \nabla f\left(\omega^{*}\right)+\sum_{i=1}^{k} \alpha_{i}^{*} \nabla g_{i}\left(\omega^{*}\right)+\sum_{j=1}^{l} \beta_{j}^{*} \nabla h_{j}\left(\omega^{*}\right)=0 \\
-&g_{i}\left(\omega^{*}\right) \leq 0, \forall i=1, \cdots, k \\
-&h_{j}\left(\omega^{*}\right)=0, \forall j=1, \cdots, l \\
-&\alpha_{i}^{*} \geq 0, \forall i=1, \cdots, k
-\end{aligned}
-$$
-
-### Convex Optimization
-
-- If objective function $f(\omega)$ and inequality constraints $g_i(\omega)$ are convex, and the equality constraints $h_j(\omega)$ are affine functions. A convex optimization problem can be represented by
-
-$$
-\begin{array}{ll}
-\min _{\omega} & f(w) \\
-\text { s.t. } & g_{i}(w) \leq 0, i=1, \cdots, k \\
-& A w-b=0
-\end{array}
-$$
-
-- where, $A\in\mathbb{R}^{l\times n}$ and $b\in\mathbb{R}^{l}$.
-
-> Theorem. **Slarter's Condition** (one of so-called *constraint qualification*, a sufficient condition)
->
->  Strong duality holds for a convex problem if it is strictly feasible, i.e., 
-> $$
-> \exists \omega \in \operatorname{relint} \mathcal{D}: g_{i}(\omega)<0, i=1, \cdots, m, A w=b
-> $$
-> relint (relative interior, 相对内部) 是指拓扑线性空间中的集合在相对意义下的内部
-
 ## Duality of  SVM
 
-> Theorem. Dual optimization problem of SVM
-> $$
-> \begin{array}{ll}
-> \max _{\alpha} & \mathcal{G}(\alpha)=\sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}\left(x^{(i)}\right)^{T} x^{(j)} \\
-> \text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
-> & \alpha_{i} \geq 0 \quad \forall i
-> \end{array}
-> $$
+-  The Lagrangian problem for SVM 
+
+$$
+\min_{\omega,b,\alpha}\mathcal L(\omega, b, \alpha)=\frac12||\omega||^2+\sum_{i=1}^m\alpha_i(y^{(i)}(\omega^Tx^{(i)}+b)-1)
+$$
+
+- The Lagrangian dual problem for SVM is $\max_\alpha\mathcal{G}(\alpha)=\inf_{\omega,b}\mathcal{L}(\omega,b,\alpha)$
+
+$$
+\begin{array}{ll}
+\min\limits_{\alpha} & \mathcal{G}(\alpha)=\sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}\left(x^{(i)}\right)^{T} x^{(j)} \\
+\text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
+& \alpha_{i} \geq 0 \quad \forall i
+\end{array}
+$$
 
 - Proof.
-  - $\mathcal{L}(\omega,b,\alpha)=\frac12\vert\vert\omega\vert\vert^2-\sum_{i=1}^m\alpha_i(y^{(i)}(\omega^Tx^{(i)}+b)-1)$
   - $\frac\part{\part\omega}\mathcal{L}(\omega,b,\alpha)=\omega-\sum_{i=1}^m\alpha_iy^{(i)}x^{(i)}=0$ and $\frac\part{\part b}\mathcal{L}(\omega,b,\alpha)=\sum_{i=1}^m\alpha_iy^{(i)}=0$
-  - Reduction ... (omitted).
+  - $\mathcal{L}$ is a convex function.
 - It suffices **Slarter's Condition** (why?). Thus, the problem can be solved by QP solver (MATLAB, ...)
 - Since we have the solution $\alpha^*$ for the dual problem, we can calculate the solution for the primal problem.
 
@@ -172,4 +79,54 @@ $$
 
 ## Kernel
 
-- 
+- Basic idea: mapping data to higher dimensions where it exhibits linear patterns.
+- Each kernel $K$ has an associated feature mapping from input to feature space $\phi: \mathcal{X}\rightarrow\mathcal{F} $.
+    - e.g., quadratic mapping $\phi: x\rightarrow\{x_1^2,x_2^2,\cdots,x_1x_2,\cdots,x_1x_n,\cdots,x_{n-1}x_n\}$
+- Kernel $K(x,z)=\phi(x)^T\phi(z),\ K:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$ **takes two inputs and gives their similarity** in $\mathcal{F}$.
+
+> Thereom. **Mercer's Condition**.
+>
+> For $K$ to be a kernel function if $K$ is a positive definite function.
+> $$
+> \int\int f(x)K(x,z)f(z)dxdz>0 \\
+> \forall f,\ s.t.\ \int_{-\infty}^{\infty}f^2(x)dx<\infty
+> $$
+
+- Composing rules
+    - Direct sum $K(x,z)=K_1(x,z)+K_2(x,z)$
+    - Scalar product $K(x,z)=\alpha K_1(x,z)$
+    - Direct product $K(x,z)=K_1(x,z)K_2(x,z)$
+
+> Def. Kernel Matrix.
+> $$
+> K_{i,j}=K(x^{(i)},x^{(j)})=\phi(x^{(i)})^T\phi(x^{(j)})
+> $$
+
+### Example Kernel
+
+- Linear (trivial) Kernal $K(x, z)=x^{T} z$
+- Quadratic Kernel $K(x, z)=\left(x^{T} z\right)^{2} \text { or }\left(1+x^{T} z\right)^{2}$
+- Polynomial Kernel (of degree $d$ ) $K(x, z)=\left(x^{T} z\right)^{d} \text { or }\left(1+x^{T} z\right)^{d}$
+- Gaussian Kernel $K(x, z)=\exp \left(-\frac{\|x-z\|^{2}}{2 \sigma^{2}}\right)$
+- Sigmoid Kernel $K(x, z)=\tanh \left(\alpha x^{T}+c\right)$
+
+### Applicable Algorithm
+
+- SVM, linear regression, etc.
+- K-means, PCA, etc.
+- For SVM
+
+$$
+\begin{array}{ll}
+\max _{\alpha} & \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}\left(x^{(i)}\right)^{T} x^{(j)} \\
+\text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
+& \alpha_{i} \geq 0 \quad \forall i
+\end{array}
+\Rightarrow 
+\begin{array}{ll}
+\max _{\alpha} & \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}K_{i,j} \\
+\text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
+& \alpha_{i} \geq 0 \quad \forall i
+\end{array}
+$$
+
