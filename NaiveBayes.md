@@ -58,29 +58,6 @@ p_{Y \mid X}(y=1 \mid x) &=\frac{p_{X \mid Y}(x \mid 1) p_{Y}(1)}{p_{X}(x)} \\
 \end{aligned}
 $$
 
-## Lagrange Multiplier
-
-- Maximize $f(x,y)$ subject to $g(x,y)=k$
-- $f (x, y)$ is maximized at point $(x0, y0)$ where they have common tangent line such that the gradient vectors are parallel, i.e., $\nabla f(x_0,y_0)=\lambda\nabla g(x_0,y_0)$.
-- 我们只需要下列拉格朗日函数的极值
-
-$$
-{\displaystyle {\mathcal {L}}(x,y,\lambda )=f(x,y)-\lambda \cdot g(x,y)}
-$$
-
-- Generally,
-
-$$
-\begin{array}{ll}
-\max & f(x) \\
-\text { s.t. } & g_{i}(x)=k_{i}, i=1,2, \cdots, m
-\end{array}
-$$
-where $x \in \mathbb{R}^{n}, f: \mathbb{R}^{n} \rightarrow \mathbb{R}$, and $g_{i}: \mathbb{R}^{n} \rightarrow \mathbb{R}$ for $\forall i=1, \cdots, m$
-$$
-{\displaystyle {\mathcal {L}}\left(x_{1},\ldots ,x_{n},\lambda _{1},\ldots ,\lambda _{k}\right)=f\left(x_{1},\ldots ,x_{n}\right)-\sum \limits _{i=1}^{k}{\lambda _{i}g_{i}\left(x_{1},\ldots ,x_{n}\right)}}
-$$
-
 ## Naive Bayes
 
 > Assumption.

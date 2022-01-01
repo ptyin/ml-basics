@@ -140,7 +140,7 @@ $$
 $$
 \begin{aligned}
 \nabla_\theta J(\theta) &=\nabla_\theta \frac12(Y-X\theta)^T(Y-X\theta) \\
-&= \frac12\nabla_\theta tr(Y^TY-Y^TX\theta-\theta^TX^TY+\theta^TX^X\theta)\\
+&= \frac12\nabla_\theta tr(Y^TY-Y^TX\theta-\theta^TX^TY+\theta^TX^TX\theta)\\
 &= \frac12 \nabla_\theta tr(\theta^TX^TX\theta)-X^TY \\
 &= \frac12 (X^TX\theta+X^TX\theta)-X^TY \\
 &=X^TX\theta-X^TY
@@ -154,5 +154,5 @@ $$
     > \theta=(X^TX)^{-1}X^TY
     > $$
 
-- 以上为least-squares解析解
+- 以上为least-squares解析解 (Normal Equation)
 

@@ -20,7 +20,7 @@ $$
 h_\theta(x)=g(\theta^Tx)=\frac1{(1+e^{-\theta^Tx})}
 $$
 
-- $\theta^Tx$ is called score.
+- $\theta^Tx$ is called score. $h_\theta$ is called logistic regression.
 - $Pr(Y=1\vert X=x;\theta)=h(\theta)=\frac1{1+e^{-\theta^Tx}}$
 - $Pr(Y=0\vert X=x;\theta)=1-h_\theta(x)=\frac1{1+e^{\theta^Tx}}$
 
@@ -43,7 +43,7 @@ p(y\vert x;\theta)=\frac1{1+exp(-y\theta^Tx)},\text{where}\ y\in\{-1,1\}\ \text{
 $$
 
 - **Maximize** the log likelihood $\begin{aligned}L(\theta)&=\prod_{i=1}^mp(y\vert x;\theta) \\\end{aligned}$
-- $l(\theta)=\mathrm{log}L(\theta)=\sum_{i=1}^m(y^{(i)}\mathrm{log}h(x^{(i)})+(1-y^{(i)})\mathrm{log}(1-h(x^{(i)})))$, still assume $y\in\{-1,1\}$
+- $l(\theta)=\mathrm{log}L(\theta)=\sum_{i=1}^m(y^{(i)}\mathrm{log}h_\theta(x^{(i)})+(1-y^{(i)})\mathrm{log}(1-h_\theta(x^{(i)})))$, still assume $y\in\{-1,1\}$
 
 $$
 \frac{\partial}{\partial \theta_j}l(\theta)=\sum_{i=1}^m\frac{y^{(i)}-h_\theta(x^{(i)})}{h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))}\cdot\frac{\partial h_\theta(x^{(i)})}{\partial \theta_j}=\sum_{i=1}^m(y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}
