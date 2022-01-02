@@ -31,7 +31,7 @@ $$
 \end{matrix}\right]
 $$
 
-> Prove.
+> Proof.
 > $$
 > \left\{
 > \begin{array}{lll}
@@ -81,14 +81,19 @@ $$
 
 #### 1. MLE
 
-- Suppose $y^{(i)}=\theta^Tx^{(i)}+\epsilon^{(i)}$, where $\epsilon\sim\mathcal{N}(0,\delta^2)$ 
-- ${\displaystyle p(x)={\frac {1}{\sigma {\sqrt {2\pi }}}}\;e^{-{\frac {\left(x-\mu \right)^{2}}{2\sigma ^{2}}}}\!}$
+- Suppose $y^{(i)}=\theta^Tx^{(i)}+\epsilon^{(i)}$, where $\epsilon\sim\mathcal{N}(0,\sigma^2)$ 
+    - Normal Distribution $p(x ; \mu, \sigma)=\frac{1}{\left(2 \pi \sigma^{2}\right)^{1 / 2}} \exp \left(-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}\right)$
+
+- $p(d^{(i)};\theta)={\frac {1}{\sigma {\sqrt {2\pi }}}}\;\exp({-{\frac 1{2\sigma ^{2}}(y^{(i)}-\theta^Tx^{(i)})^2}})\Rightarrow\log p(d^{(i)};\theta)=\log\frac1{\sigma\sqrt{2\pi}}-\frac1{2\sigma^2}(y^{(i)}-\theta x^{(i)})^2$
 - $\theta_{MLE}=\mathrm{arg}\mathop{\mathrm{min}}\limits_\theta\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$
 
 #### 2. MAP
 
-- Suppose $\theta\sim\mathcal{N}(0,\lambda^2I)$
-- $\mathrm{log}\ p(\theta)=n\mathrm{log}\frac1{\sqrt{2\pi}\lambda}-\frac{\theta^T\theta}{2\lambda^2}$
+- Suppose $\epsilon\sim\mathcal N(0, \sigma^2), \theta\sim\mathcal{N}(0,\lambda^2I)$
+    - Multivariate normal distribution $p(x ; \mu, \Sigma)=\frac{1}{(2 \pi)^{n / 2}|\Sigma|^{1 / 2}} \exp \left(-\frac{1}{2}(x-\mu)^{T} \Sigma^{-1}(x-\mu)\right)$
+    - where $\mu\in\mathbb{R}^n$, $\Sigma\in\mathbb{R}^{n\times n}$ is symmetric and postitive semidefinite
+
+- $p(\theta)=\frac1{(\sqrt{2\pi}\lambda)^n}\exp(-\frac1{2\lambda}\theta^T\theta)\Rightarrow\log\ p(\theta)=n\mathrm{log}\frac1{\sqrt{2\pi}\lambda}-\frac{\theta^T\theta}{2\lambda^2}$
 - $\theta_{MAP}=\mathrm{arg}\mathop{\mathrm{min}}\limits_\theta\left\{\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2+\frac{\theta^T\theta}{2\lambda^2}\right\}$
 
 #### 3. MLE vs MAP
