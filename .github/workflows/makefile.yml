@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: docker://pandoc/core:2.9
 
     steps:
     - uses: actions/checkout@v2
