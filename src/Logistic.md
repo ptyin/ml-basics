@@ -26,13 +26,11 @@ $$
 
 ### Decision Boundary
 
-- $\begin{array}{c}Pr(Y=1\vert X=x;\theta)=Pr(Y=0\vert X=x;\theta)&\Rightarrow&\theta^Tx=0\end{array}$
+- $\begin{array}{ccc}Pr(Y=1\vert X=x;\theta)=Pr(Y=0\vert X=x;\theta)&\Rightarrow&\theta^Tx=0\end{array}$
 - $\therefore$ The decision boundary is a linear hyperplane.
 - **The score $\theta^Tx$ is also a measure of distance $x$ from the hyperplane.**
 
-### Probability Mass Function (概率质量函数)
-
->  概率质量函数和概率密度函数不同之处在于：概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。
+### Probability Mass Function
 
 $$
 p(y\vert x;\theta)=Pr(Y=y\vert X=x;\theta)=(h_\theta(x))^y(1-h_\theta(x))^{1-y}, \text{where}\ y\in\{0,1\}

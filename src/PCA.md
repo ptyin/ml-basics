@@ -58,7 +58,7 @@ $$
 - Take the derivative w.r.t. $u_1$ and setting to zero
 
 $$
-\frac{\part}{\part u_1}\mathcal{L}\left(u_{1}, \lambda_{1}\right)=(S+S^T)u_{1}-2\lambda_{1}u_{1}=0 \\
+\frac{\partial}{\partial u_1}\mathcal{L}\left(u_{1}, \lambda_{1}\right)=(S+S^T)u_{1}-2\lambda_{1}u_{1}=0 \\
 \Leftrightarrow \\
 Su_1=\lambda_1u_1,\ (S=S^T)
 $$

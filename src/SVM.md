@@ -10,7 +10,7 @@
 - Goal: Learn $\omega$ and $b$ that achieves the maximum margin $\mathop{\mathrm{max}}\limits_{\omega,b}\ \mathop{\mathrm{min}}\limits_i\gamma^{(i)}$
 
 $$
-\begin{array}{l}
+\begin{array}{ll}
 \mathop{\mathrm{max}}\limits_{\gamma,\omega,b}\ \gamma \\
 s.t.\ y^{(i)}(\omega^Tx^{(i)}+b)\ge\gamma\vert\vert\omega\vert\vert, & \forall i
 \end{array}
@@ -19,7 +19,7 @@ $$
 - Scaling $(\omega,b)$ such that $\gamma\vert\vert\omega\vert\vert=1$, the problem becomes
 
 $$
-\begin{array}{l}
+\begin{array}{ll}
 \mathop{\mathrm{max}}\limits_{\omega,b}\ \frac1{\vert\vert\omega\vert\vert} \Leftrightarrow \mathop{\mathrm{min}}\limits_{\omega,b}\ \omega^T\omega \Leftrightarrow \min\limits_{\omega,b}\frac12\vert\vert\omega\vert\vert^2 \\
 s.t.\ y^{(i)}(\omega^Tx^{(i)}+b)\ge1, & \forall i
 \end{array}
@@ -29,7 +29,7 @@ $$
 
 > Def. The primal problem
 > $$
-> \begin{array}{l}
+> \begin{array}{ll}
 > \min\limits_{\omega,b}\frac12\vert\vert\omega\vert\vert^2 \\
 > s.t.\ y^{(i)}(\omega^Tx^{(i)}+b)\ge1, & \forall i
 > \end{array}
@@ -54,7 +54,7 @@ $$
 $$
 
 - Proof.
-  - $\frac\part{\part\omega}\mathcal{L}(\omega,b,\alpha)=\omega-\sum_{i=1}^m\alpha_iy^{(i)}x^{(i)}=0$ and $\frac\part{\part b}\mathcal{L}(\omega,b,\alpha)=\sum_{i=1}^m\alpha_iy^{(i)}=0$
+  - $\frac\partial{\partial\omega}\mathcal{L}(\omega,b,\alpha)=\omega-\sum_{i=1}^m\alpha_iy^{(i)}x^{(i)}=0$ and $\frac\partial{\partial b}\mathcal{L}(\omega,b,\alpha)=\sum_{i=1}^m\alpha_iy^{(i)}=0$
   - $\mathcal{L}$ is a convex function.
 - It suffices **Slarter's Condition**. Thus, the problem can be solved by QP solver (MATLAB, ...)
 - Since we have the solution $\alpha^*$ for the dual problem, we can calculate the solution for the primal problem.
@@ -80,7 +80,7 @@ $$
 ## Kernel
 
 - Basic idea: mapping data to higher dimensions where it exhibits linear patterns.
-- Each kernel $K$ has an associated feature mapping from input to feature space $\phi: \mathcal{X}\rightarrow\mathcal{F} $.
+- Each kernel $K$ has an associated feature mapping $\phi: \mathcal{X}\rightarrow\mathcal{F}$ from input to feature space.
     - e.g., quadratic mapping $\phi: x\rightarrow\{x_1^2,x_2^2,\cdots,x_1x_2,\cdots,x_1x_n,\cdots,x_{n-1}x_n\}$
 - Kernel $K(x,z)=\phi(x)^T\phi(z),\ K:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$ **takes two inputs and gives their similarity** in $\mathcal{F}$.
 
@@ -137,8 +137,8 @@ $$
 
 > Def. **Soft Margin SVM**
 > $$
-> \begin{array}{ll}
-> \min_{\omega,b,\xi}&\frac12||\omega||^2+C\sum_{i=1}^m\xi_i \\
+> \begin{array}{lll}
+> \min_{\omega,b,\xi}&\frac12||\omega||^2+C\sum_{i=1}^m\xi_i& \\
 > s.t. & y^{(i)}(\omega^Tx^{(i)}+b)\ge1-\xi_i, &\forall i=1,\cdots,m \\
 > & \xi_i\ge0, &\forall i=1,\cdots,m
 > \end{array}

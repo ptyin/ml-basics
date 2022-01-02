@@ -69,7 +69,7 @@ $$
 > Theorem.
 > $$
 > p(y)=\frac{count(y)}{m},p_j(x\mid y)=\frac{count_j(x\mid y)}{count(y)} \\
-> count(y)=\sum_{i=1}^m1(y^{(i)}=y),\ count_j(x\mid y)=\sum_{i=1}^m1(y^{(i)}=y\and x_j^{(i)}=x), \\
+> count(y)=\sum_{i=1}^m1(y^{(i)}=y),\ count_j(x\mid y)=\sum_{i=1}^m1(y^{(i)}=y\wedge x_j^{(i)}=x), \\
 > \forall y=0,1,\forall x=0,1.
 > $$
 
@@ -95,8 +95,6 @@ $$
 > where $k$ is number of the possible values of $y(k=2$ in our case), and $v_{j}$ is the number of the possible values of the $j$-th feature $\left(v_{j}=2\right.$ for $\forall j=1, \cdots, n$ in our case)
 
 ### Multinomial Distribution
-
-- 多项分布，二项分布的典型例子是扔硬币，硬币正面朝上概率为p, 重复扔n次硬币，k次为正面的概率即为一个二项分布概率。把二项分布公式推广至多种状态，就得到了多项分布。
 
 > Assumption
 >
@@ -160,9 +158,9 @@ $$
 
 - Basic idea of EM algorithm
     - Repeatedly construct a lower-bound on $\ell$ (E-step) 
-        - E-Step 主要通过观察数据和现有模型来估计参数，然后用这个估计的参数值来计算似然函数的期望值
+        - E-Step estimates the parameters by observing the data and the existing model, and then use this estimated parameter value to calculate the expected value of the likelihood function.
     - Then optimize that lower-bound (M-step)
-        - M-step 寻找似然函数最大化时对应的参数。由于算法会保证在每次迭代之后似然函数都会增加，所以函数最终会收敛。
+        - M-step finds the corresponding parameters when the likelihood function is maximized. Since the algorithm guarantees that the likelihood function will increase after each iteration, the function will eventually converge.
 - Let $Q_i$ denotes the distribution of $z$ for $i$-th sample. Thus, $\sum_{z\in\Omega}Q_i(z)=1$, $Q_i(z)\ge0$
 
 $$
