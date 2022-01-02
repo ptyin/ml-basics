@@ -12,14 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2
 
-    - uses: actions/checkout@v2
+      - name: Update apt
+        run: sudo apt-get update
 
-    - name: Install latex compiler
-      run: sudo apt-get install -y texlive-latex-base
+      - name: Install latex compiler
+        run: sudo apt-get install -y texlive-xetex
 
-    - name: Install pandoc
-      run: sudo apt-get install -y pandoc
+      - name: Setup pandoc
+        run: sudo apt-get install -y pandoc
 
-    - name: Compile PDF
-      run: make all
+      - name: Compile PDF
+        run: make all
