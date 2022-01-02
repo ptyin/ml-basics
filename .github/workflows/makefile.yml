@@ -26,3 +26,17 @@ jobs:
 
       - name: Compile PDF
         run: make all
+
+      - name: Commit PDF
+        run: |
+          git config --local user.email "peteryin1604@gmail.com"
+          git config --local user.name "ptyin[bot]"
+          git add -A pdf/
+          git commit -m "Auto generating PDF"
+
+      - name: Push to github
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          # Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
