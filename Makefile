@@ -9,7 +9,7 @@
 
 # Convert all files in this directory that have a .md suffix
 SOURCE_DIR=src
-OUTPUT_DIR=target
+OUTPUT_DIR=pdf
 SOURCE_DOCS := $(wildcard ${SOURCE_DIR}/*.md)
 
 EXPORTED_DOCS=\
