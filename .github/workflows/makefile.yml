@@ -9,10 +9,10 @@ on:
 jobs:
   build:
 
-    runs-on: docker://pandoc/core:2.9
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: docker://pandoc/core:2.9
 
     - name: Compile PDF
       run: make all
