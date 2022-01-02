@@ -10,7 +10,7 @@ h_\theta(x)=\sum_{i=0}^n\theta_i x_i=\theta^Tx
 \end{array}
 $$
 
-- best choice for $\theta=\mathop{\mathrm{argmin}}\limits_\theta\ J(\theta)$
+- best choice for $\theta=\arg\min\limits_\theta\ J(\theta)$
 
 ## Gradient
 
