@@ -15,6 +15,9 @@ jobs:
 
     - uses: actions/checkout@v2
 
+    - name: Install latex compiler
+      run: sudo apt-get install -y texlive-latex-base
+
     - name: Install pandoc
       run: sudo apt-get install -y pandoc
 
