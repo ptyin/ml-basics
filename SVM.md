@@ -40,14 +40,14 @@ $$
 -  The Lagrangian problem for SVM 
 
 $$
-\min_{\omega,b,\alpha}\mathcal L(\omega, b, \alpha)=\frac12||\omega||^2+\sum_{i=1}^m\alpha_i(y^{(i)}(\omega^Tx^{(i)}+b)-1)
+\min_{\omega,b,\alpha}\mathcal L(\omega, b, \alpha)=\frac12||\omega||^2+\sum_{i=1}^m\alpha_i(1-y^{(i)}(\omega^Tx^{(i)}+b))
 $$
 
 - The Lagrangian dual problem for SVM is $\max_\alpha\mathcal{G}(\alpha)=\inf_{\omega,b}\mathcal{L}(\omega,b,\alpha)$
 
 $$
 \begin{array}{ll}
-\min\limits_{\alpha} & \mathcal{G}(\alpha)=\sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}\left(x^{(i)}\right)^{T} x^{(j)} \\
+\max\limits_{\alpha} & \mathcal{G}(\alpha)=\sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}\left(x^{(i)}\right)^{T} x^{(j)} \\
 \text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
 & \alpha_{i} \geq 0 \quad \forall i
 \end{array}
@@ -56,7 +56,7 @@ $$
 - Proof.
   - $\frac\part{\part\omega}\mathcal{L}(\omega,b,\alpha)=\omega-\sum_{i=1}^m\alpha_iy^{(i)}x^{(i)}=0$ and $\frac\part{\part b}\mathcal{L}(\omega,b,\alpha)=\sum_{i=1}^m\alpha_iy^{(i)}=0$
   - $\mathcal{L}$ is a convex function.
-- It suffices **Slarter's Condition** (why?). Thus, the problem can be solved by QP solver (MATLAB, ...)
+- It suffices **Slarter's Condition**. Thus, the problem can be solved by QP solver (MATLAB, ...)
 - Since we have the solution $\alpha^*$ for the dual problem, we can calculate the solution for the primal problem.
 
 $$
@@ -129,4 +129,65 @@ $$
 & \alpha_{i} \geq 0 \quad \forall i
 \end{array}
 $$
+
+## Soft Margin
+
+- Relax the constraints from $y^{(i)}(\omega^Tx^{(i)}+b)\ge1$ to $y^{(i)}(\omega^Tx^{(i)}+b)\ge1-\xi_i$
+- $\xi_i\ge0$ is called slack variable
+
+> Def. **Soft Margin SVM**
+> $$
+> \begin{array}{ll}
+> \min_{\omega,b,\xi}&\frac12||\omega||^2+C\sum_{i=1}^m\xi_i \\
+> s.t. & y^{(i)}(\omega^Tx^{(i)}+b)\ge1-\xi_i, &\forall i=1,\cdots,m \\
+> & \xi_i\ge0, &\forall i=1,\cdots,m
+> \end{array}
+> $$
+
+- $C$ is a hyper-parameter that controls the relative weighting between $\frac12||\omega||^2$ for **larger margins** and $\sum_{i=1}^m\xi_i$ for **fewer misclassified examples**.
+- Lagrangian function
+
+$$
+\mathcal{L}(\omega, b, \xi, \alpha, r)=\frac{1}{2} \omega^{T} \omega+C \sum_{i=1}^{m} \xi_{i}-\sum_{i=1}^{m} \alpha_{i}\left[y^{(i)}\left(\omega^{T} x^{(i)}+b\right)-1+\xi_{i}\right]-\sum_{i=1}^{m} r_{i} \xi_{i}
+$$
+
+- KKT conditions (the optimal values of $\omega, b, \xi, \alpha$, and $r$ should satisfy the following conditions)
+
+    - $\nabla_{\omega} \mathcal{L}(\omega, b, \xi, \alpha, r)=0 \Rightarrow \omega^{*}=\sum_{i=1}^{m} \alpha_{i}^{*} y^{(i)} x^{(i)}$
+
+    - $\nabla_{b} \mathcal{L}(\omega, b, \xi, \alpha, r)=0 \Rightarrow \sum_{i=1}^{m} \alpha_{i}^{*} y^{(i)}=0$
+
+    - $\nabla_{\xi_{i}} \mathcal{L}(\omega, b, \xi, \alpha, r)=0 \Rightarrow \alpha_{i}^{*}+r_{i}^{*}=C$, for $\forall i$
+
+    - $\alpha_{i}^{*}, r_{i}^{*}, \xi_{i}^{*} \geq 0$, for $\forall i$
+
+    - $y^{(i)}\left(\omega^{* T} x^{(i)}+b^{*}\right)+\xi_{i}^{*}-1 \geq 0$, for $\forall i$
+
+    - $\alpha_{i}^{*}\left(y^{(i)}\left(\omega^{*} x^{(i)}+b^{*}\right)+\xi_{i}^{*}-1\right)=0$, for $\forall i$
+
+    - $r_{i}^{*} \xi_{i}^{*}=0$, for $\forall i$
+
+- Dual problem
+
+$$
+\begin{array}{ll}
+\max _{\alpha} & \mathcal{J}(\alpha)=\sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}<x^{(i)}, x^{(j)}> \\
+\text { s.t. } \quad & 0 \leq \alpha_{i} \leq C, \quad \forall i=1, \cdots, m \\
+& \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0
+\end{array}
+$$
+
+- Solution
+    - $\omega^*=\sum_{i=1}^m\alpha_i^*y^{(i)}x^{(i)}$
+    - $b^*=\frac{\sum_{i:0<{\alpha_i^*}<C}(y^{(i)}-{\omega^*}^Tx^{(i)})}{\sum_{i=1}^m1(0<\alpha_i^*<C)}$
+- Proof. 
+
+$$
+\begin{array}{l}\because r_i^*\xi_i^*=0\Leftrightarrow (C-\alpha_i^*)\xi_i^*=0 \\ \therefore \forall i, \alpha_i^*\ne C\Rightarrow\xi_i=0\Rightarrow \alpha_i(y^{(i)}({\omega^*}^Tx^{(i)}+b^*)-1)=0 \\ \therefore \forall i, \alpha_i^*\in(0,C)\Rightarrow y^{(i)}({\omega^*}^Tx^{(i)}+b^*)=1 \Rightarrow {\omega^*}^Tx^{(i)}+b^*=y^{(i)}\end{array}
+$$
+
+- Corollaries of KKT conditions for soft-margin SVM
+    - When $\alpha_{i}^{*}=0, y^{(i)}\left(\omega^{* T} x^{(i)}+b^{*}\right) \geq 1$, correctly classified.
+    - When $\alpha_{i}^{*}=C, y^{(i)}\left(\omega^{* T} x^{(i)}+b^{*}\right) \leq 1$, misclassified. 
+    - When $0<\alpha_{i}^{*}<C, y^{(i)}\left(\omega^{* T} x^{(i)}+b^{*}\right)=1$, support vector.
 
