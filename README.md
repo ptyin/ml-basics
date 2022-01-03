@@ -1,4 +1,9 @@
+## About
+
+> 山东大学计算机学院2021-2022机器学习笔记，总结了考试范围内的知识点
+
 ## Download & Read
+
 ```shell
 git clone https://github.com/PTYin/ml-basics.git
 ```
