@@ -14,14 +14,15 @@ for $\forall y \in \mathcal{Y}$, where $N=\sum_{y \in \mathcal{Y}} c_{y} .$ (Hin
 #### Answer:
 
 $$
-\begin{aligned}
-&\max \sum_{y \in \mathcal{Y}} c_{y} \log p_{y} \\
-&\text { s.t. } \sum_{y \in \mathcal{Y}} p_{y}=1 \\
-&p(y) \geq 0, \forall y \in \mathcal{Y}
-\end{aligned}
+\begin{array}{l}
+\max \sum_{y \in \mathcal{Y}} c_{y} \log p_{y} \\
+\text { s.t. } \sum_{y \in \mathcal{Y}} p_{y}=1 \\
+p(y) \geq 0, \forall y \in \mathcal{Y}
+\end{array}
+$$
 
-\mathop\Rightarrow\limits^{\text{Lagrange}}
-
+Lagrangian problem is:
+$$
 \begin{array}{c}
 F=\sum_{y \in \mathcal{Y}} c_{y} \log p_{y}+\lambda\left(\sum_{y \in \mathcal{Y}} p_{y}-1\right)\\
 \frac{\partial F}{\partial \lambda}=\sum_{y \in \mathcal{Y}} p_{y}-1\\

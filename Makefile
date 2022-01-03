@@ -8,8 +8,8 @@
 # Run "make clean" to delete converted files
 
 # Convert all files in this directory that have a .md suffix
-SOURCE_DIR=src
-OUTPUT_DIR=pdf
+SOURCE_DIR=src/*
+OUTPUT_DIR=pdf/*
 SOURCE_DOCS := $(wildcard ${SOURCE_DIR}/*.md)
 
 EXPORTED_DOCS=\
@@ -35,22 +35,22 @@ PANDOC_EPUB_OPTIONS=--to epub3
 
 # Pattern-matching Rules
 
-%.html : %.md
+${OUTPUT_DIR}/%.html : ${SOURCE_DIR}/%.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_HTML_OPTIONS) -o $@ $<
 
 ${OUTPUT_DIR}/%.pdf : ${SOURCE_DIR}/%.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_PDF_OPTIONS) -o $@ $<
 	
-%.docx : %.md
+${OUTPUT_DIR}/%.docx : ${SOURCE_DIR}/%.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_DOCX_OPTIONS) -o $@ $<
 
-%.rtf : %.md
+${OUTPUT_DIR}/%.rtf : ${SOURCE_DIR}/%.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_RTF_OPTIONS) -o $@ $<
 
-%.odt : %.md
+${OUTPUT_DIR}/%.odt : ${SOURCE_DIR}/%.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_ODT_OPTIONS) -o $@ $<
 
-%.epub : %.md
+${OUTPUT_DIR}/%.epub : ${SOURCE_DIR}/%.md
 	$(PANDOC) $(PANDOC_OPTIONS) $(PANDOC_EPUB_OPTIONS) -o $@ $<
 
 
