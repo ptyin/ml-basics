@@ -37,6 +37,8 @@ $$
 
 ## Duality of  SVM
 
+>  Preliminaries should be mastered in chapterr Optimization of appendix.
+
 -  The Lagrangian problem for SVM 
 
 $$
@@ -114,7 +116,10 @@ $$
 
 - SVM, linear regression, etc.
 - K-means, PCA, etc.
-- For SVM
+
+### Kernelized SVM
+
+- Optimization problem
 
 $$
 \begin{array}{ll}
@@ -129,6 +134,28 @@ $$
 & \alpha_{i} \geq 0 \quad \forall i
 \end{array}
 $$
+
+- Solution
+
+$$
+\begin{aligned}
+\omega^{*} &=\sum_{i: \alpha_{i}^{*}>0} \alpha_{i}^{*} y^{(i)} \phi\left(x^{(i)}\right) \\
+b^{*} &=y^{(i)}-\omega^{* T} \phi\left(x^{(i)}\right) \\
+&=y^{(i)}-\sum_{j: \alpha_{j}^{*}>0} \alpha_{j}^{*} y^{(j)} \phi^{T}\left(x^{(j)}\right) \phi\left(x^{(i)}\right) \\
+&=y^{(i)}-\sum_{j: \alpha_{j}^{*}>0} \alpha_{j}^{*} y^{(j)} K_{i j}
+\end{aligned}
+$$
+
+- Prediction
+
+$$
+\begin{aligned}
+y &=\operatorname{sign}\left(\sum_{i: \alpha_{i}^{*}>0} \alpha_{i}^{*} y^{(i)} \phi\left(x^{(i)}\right)^{T} \phi(x)+b^{*}\right) \\
+&=\operatorname{sign}\left(\sum_{i: \alpha_{i}^{*}>0} \alpha_{i}^{*} y^{(i)} K\left(x^{(i)}, x\right)+b^{*}\right)
+\end{aligned}
+$$
+
+- Kenerlized SVM needs to compute kernel when testing, whereas computed $\omega^*$ and $b^* $ are enough in the unkenerlized version.
 
 ## Soft Margin
 

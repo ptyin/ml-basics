@@ -117,7 +117,7 @@ $$
 > Problem.
 > $$
 > \begin{array}{ll}
-> \max & \ell(\Omega)=\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} \log p\left(x_{j}^{(i)} \mid y^{(i)}\right)+\sum_{i=1}^{m} \log p\left(y^{(i)}\right) \\
+> \max & \ell(\Omega)=\log p\left (y^{(i)}\right)\prod_{i=1}^m p(x^{(i)}\mid y^{(i)})=\sum_{i=1}^{m} \sum_{j=1}^{n_{i}} \log p(x_{j}^{(i)} \mid y^{(i)})+\sum_{i=1}^{m} \log p\left(y^{(i)}\right) \\
 > \text { s.t. } & \sum_{y \in\{0,1\}} p(y)=1, \\
 > & \sum_{t=1}^{v} p(t \mid y)=1, \forall y=0,1 \\
 > & p(y) \geq 0, \forall y=0,1 \\
@@ -147,14 +147,14 @@ $$
 
 ## Expectation Maximization (EM) Algorithm
 
-> Def.
+> Def. **Latent Variable**.
 > $$
 > \begin{aligned} 
 > \ell(\theta) &= \mathrm{log}\prod_{i=1}^mp(x^{(i)};\theta) \\
 > &= \sum_{i=1}^m\mathrm{log}\sum_{z^{(i)}\in\Omega}p(x^{(i)},z^{(i)};\theta)
 > \end{aligned}
 > $$
-> where $z^{(i)}\in\Omega$ is so-called *latent variable* 
+> where $z^{(i)}\in\Omega$ is so-called *latent variable*.
 
 - Basic idea of EM algorithm
     - Repeatedly construct a lower-bound on $\ell$ (E-step) 
@@ -169,6 +169,13 @@ $$
 &=\sum_{i=1}^{m} \log E\left[\frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)}\right]
 \end{aligned}
 $$
+
+> Thereom. **Jesen's Inequality**.
+>
+> Assume $f$ be a concave function.
+> $$
+> f(E[X])\ge E(f(X))
+> $$
 
 - **Since $\mathrm{log}(·)$ is a concave function, according to Jensen’s inequality, we have**
 
@@ -198,17 +205,23 @@ $$
 
 #### Naive Bayes with Missing Labels
 
-- When labels are given $\ell(\theta)=\sum_{i=1}^m\mathrm{log}\left[\ p(y^{(i)})\prod_{j=1}^np_j(x_j^{(i)}\mid y^{(i)})\right]$
-- When labels are missed $\ell(\theta)=\sum_{i=1}^m\mathrm{log}\sum_{y=1}^k\left[p(y)\prod_{j=1}^np_j(x_j^{(i)}\mid y)\right]$
+- When labels are given $\ell(\theta)=\log p(x,y)=\sum_{i=1}^m\mathrm{log}\left[\ p(y^{(i)})\prod_{j=1}^np_j(x_j^{(i)}\mid y^{(i)})\right]$
+- When labels are missed $\ell(\theta)=\log p(x)=\sum_{i=1}^m\mathrm{log}\sum_{y=1}^k\left[p(y)\prod_{j=1}^np_j(x_j^{(i)}\mid y)\right]$
 
 #### Applying EM to NB
 
 - (E-step) For each $i=1, \cdots, m$ and $y=1, \cdots, k$ set
+    
+    - Relabel $y$ by $Q_i(y)$.
+    
     $$
     Q_{i}(y)=p\left(y^{(i)}=y \mid x^{(i)}\right)=\frac{p(y) \prod_{j=1}^{n} p_{j}\left(x_{j}^{(i)} \mid y\right)}{\sum_{y^{\prime}=1}^{k} p\left(y^{\prime}\right) \prod_{j=1}^{n} p_{j}\left(x_{j}^{(i)} \mid y^{\prime}\right)}
     $$
-
+    
 - (M-step) Update the parameters (solved by Lagrange multiplier).
+
+    - Use $\sum_{i=1}^mQ_i(y)$ to substitute the $count(y)$
+
     $$
     \begin{aligned}
     &p(y)=\frac{1}{m} \sum_{i=1}^{m} Q_{i}(y), \quad \forall y \\
