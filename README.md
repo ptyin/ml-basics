@@ -18,7 +18,8 @@ git clone https://github.com/PTYin/ml-basics.git
 
 - [x] Naive Bayes [[Markdown](src/questions/NaiveBayes.md)] [[PDF](pdf/questions/NaiveBayes.pdf)]
 
-## Apendix
+## Appendix
 
-- [x] Optimization [[Markdown](src/Optimization.md)] [[PDF](pdf/Optimization.pdf)]
+- [x] Matrix Calculus [[Markdown](src/appendix/MatrixCalculus.md)] [[PDF](pdf/appendix/MatrixCalculus.pdf)]
+- [x] Optimization [[Markdown](src/appendix/Optimization.md)] [[PDF](pdf/appendix/Optimization.pdf)]
 
