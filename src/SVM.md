@@ -16,7 +16,9 @@ s.t.\ y^{(i)}(\omega^Tx^{(i)}+b)\ge\gamma\vert\vert\omega\vert\vert, & \forall i
 \end{array}
 $$
 
-- Scaling $(\omega,b)$ such that $\gamma\vert\vert\omega\vert\vert=1$, the problem becomes
+- Scaling $(\omega,b)$ such that $\gamma\vert\vert\omega\vert\vert=1$, i.e. $\omega'=\frac\omega{\gamma||\omega||}$ and $b'=\frac b{\gamma||\omega||}$.
+- $\therefore||\omega'||=\frac{||\omega||}{\gamma||\omega||}=\frac1\gamma,\ y^{(i)}(\omega'^Tx^{(i)}+b')\ge1$
+- the problem becomes
 
 $$
 \begin{array}{ll}
