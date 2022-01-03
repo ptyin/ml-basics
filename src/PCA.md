@@ -31,12 +31,18 @@ $$
 - **Variance of projections** is $u_1^TSu_1$
 
 $$
-\frac{1}{N} \sum_{i=1}^{N}\left(u_{1}^{T} x^{(i)}-u_{1}^{T} \mu\right)^{2}=\frac{1}{N} \sum_{i=1}^{N}\left[u_{1}^{T}\left(x^{(i)}-\mu\right)\right]^{2}=u_{1}^{T} S u_{1}
+\begin{aligned}
+\frac{1}{N} \sum_{i=1}^{N}\left(u_{1}^{T} x^{(i)}-u_{1}^{T} \mu\right)^{2}
+&=\frac{1}{N} \sum_{i=1}^{N}\left[u_{1}^{T}\left(x^{(i)}-\mu\right)\right]^{2}\\
+&=\frac{1}{N} \sum_{i=1}^{N}\left[u_{1}^{T}\left(x^{(i)}-\mu\right)\right]\left[u_{1}^{T}\left(x^{(i)}-\mu\right)\right]^T \\
+&=E\left[u_1^T\left(X-\mu\right)\left(X-\mu\right)^Tu_1\right] \\
+&=u_{1}^{T} S u_{1}
+\end{aligned}
 $$
 - $S$ is the $D \times D$ data covariance matrix
 
 $$
-S=\frac{1}{N} \sum_{i=1}^{N}\left(x^{(i)}-\mu\right)\left(x^{(i)}-\mu\right)^{T}
+S=E\left[(X-\mu)(X-\mu)^T\right]=\frac{1}{N} \sum_{i=1}^{N}\left(x^{(i)}-\mu\right)\left(x^{(i)}-\mu\right)^{T}
 $$
 
 ### Optimization
