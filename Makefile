@@ -12,8 +12,8 @@ SOURCE_DIR=src
 OUTPUT_DIR=pdf
 SOURCE_DOCS := $(wildcard $(SOURCE_DIR)/*.md $(SOURCE_DIR)/*/*.md)
 
-EXPORTED_DOCS=\
- $(SOURCE_DOCS:$(SOURCE_DIR)/%.md=$(OUTPUT_DIR)/%.pdf)
+EXPORTED_DOCS=$(SOURCE_DOCS:$(SOURCE_DIR)/%.md=$(OUTPUT_DIR)/%.pdf)
+ALREADY_EXPORTED_DOCS=$(wildcard $(OUTPUT_DIR)/*.pdf $(OUTPUT_DIR)/*/*.pdf)
 #  $(SOURCE_DOCS:.md=.html) \
 #  $(SOURCE_DOCS:.md=.pdf) \
 #  $(SOURCE_DOCS:.md=.docx) \
@@ -68,8 +68,11 @@ $(OUTPUT_DIR)/%.epub : $(SOURCE_DIR)/%.md
 all : $(EXPORTED_DOCS)
 
 clean:
-	$(RM) $(EXPORTED_DOCS)
+ifneq ("$(ALREADY_EXPORTED_DOCS)", "")
+	$(RM) $(ALREADY_EXPORTED_DOCS)
+endif
 
 test:
 	@echo $(SOURCE_DOCS)
 	@echo $(EXPORTED_DOCS)
+	@echo $(ALREADY_EXPORTED_DOCS)
