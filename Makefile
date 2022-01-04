@@ -27,7 +27,7 @@ MKDIR=mkdir
 PANDOC=pandoc
 PANDOC_OPTIONS=
 PANDOC_HTML_OPTIONS=--to html5
-PANDOC_PDF_OPTIONS=--pdf-engine=xelatex -V mainfont="WenQuanYi Zen Hei"
+PANDOC_PDF_OPTIONS=--pdf-engine=xelatex -V mainfont="WenQuanYi Micro Hei"
 PANDOC_DOCX_OPTIONS=
 PANDOC_RTF_OPTIONS=
 PANDOC_ODT_OPTIONS=
