@@ -26,5 +26,6 @@ git clone https://github.com/PTYin/ml-basics.git
 ## Appendix
 
 - [x] Matrix Calculus [[Markdown](src/appendix/MatrixCalculus.md)] [[PDF](pdf/appendix/MatrixCalculus.pdf)]
+- [x] 矩阵求导 [[Markdown](src/appendix/矩阵求导.md)] [[PDF](pdf/appendix/矩阵求导.pdf)]
 - [x] Optimization [[Markdown](src/appendix/Optimization.md)] [[PDF](pdf/appendix/Optimization.pdf)]
 
