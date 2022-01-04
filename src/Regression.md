@@ -74,5 +74,3 @@ $$
     > $$
     > \theta=(X^TX)^{-1}X^TY
     > $$
-
-test by rookie cui
