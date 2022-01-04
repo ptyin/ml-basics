@@ -25,7 +25,7 @@ jobs:
         run: sudo apt-get install -y pandoc
 
       - name: Compile PDF
-        run: make all
+        run: make clean all
 
       - name: Commit PDF
         run: |
