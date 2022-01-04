@@ -1,3 +1,5 @@
+# Linear Regression
+
 ## Basics
 
 - Linear hypothesis: $h(x)=\theta_1x+\theta_0,\ \theta_i(i=1,2\text{ for 2D cases})$.
