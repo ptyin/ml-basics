@@ -64,8 +64,10 @@ $$
 - Since we have the solution $\alpha^*$ for the dual problem, we can calculate the solution for the primal problem.
 
 $$
-\omega^*=\sum_{i=1}^m\alpha^*y^{(i)}x^{(i)}\\
-b^*=y^{(i)}-{\omega^*}^Tx^{(i)},\ \text{if}\ \alpha^*>0
+\begin{array}{ll}
+\omega^*=\sum_{i=1}^m\alpha^*y^{(i)}x^{(i)} & \\
+b^*=y^{(i)}-{\omega^*}^Tx^{(i)} & \text{if}\ \alpha_i^*>0
+\end{array}
 $$
 
 - For robustness, the optimal value for $b$ is calculated by taking the averages across all $b^*$
@@ -124,16 +126,18 @@ $$
 - Optimization problem
 
 $$
+\begin{array}{c}
 \begin{array}{ll}
 \max _{\alpha} & \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}\left(x^{(i)}\right)^{T} x^{(j)} \\
 \text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
 & \alpha_{i} \geq 0 \quad \forall i
-\end{array}
-\Rightarrow 
+\end{array} \\
+\\ \Downarrow \\ \\
 \begin{array}{ll}
 \max _{\alpha} & \sum_{i=1}^{m} \alpha_{i}-\frac{1}{2} \sum_{i, j=1}^{m} y^{(i)} y^{(j)} \alpha_{i} \alpha_{j}K_{i,j} \\
 \text { s.t. } & \sum_{i=1}^{m} \alpha_{i} y^{(i)}=0 \\
 & \alpha_{i} \geq 0 \quad \forall i
+\end{array}
 \end{array}
 $$
 
