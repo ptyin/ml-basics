@@ -32,8 +32,8 @@ L(Y, \hat{f}(X))=\left\{\begin{array}{l}
 \end{array}\right.
 $$
 
-- Test / generalized error $\mathrm{Err}_\mathcal{D}=\mathbb E[L(Y,\hat f(X))\mid D]$, where $\mathcal D$ denotes the training set.
-- Expected prediction / test error $\mathrm{Err}=\mathbb E[L(Y,\hat f(X))]=\mathbb E[\mathrm{Err}_\mathcal{D}]$.
+- Test / generalized error $\mathrm{Err}_{\mathcal{D}}=\mathbb E[L(Y,\hat f(X))\mid D]$, where $\mathcal D$ denotes the training set.
+- Expected prediction / test error $\mathrm{Err}=\mathbb E[L(Y,\hat f(X))]=\mathbb E[\mathrm{Err}_{\mathcal{D}}]$.
 - Training error $\overline{\mathrm{err}}=\frac1m\sum_{i=1}^mL(y_i,\hat f(x_i))$
 
 ----
