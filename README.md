@@ -17,7 +17,7 @@ git clone https://github.com/PTYin/ml-basics.git
 - [x] Support Vector Machine [[Markdown](src/SVM.md)] [[PDF](pdf/SVM.pdf)]
 - [x] K-Means [[Markdown](src/KMeans.md)] [[PDF](pdf/KMeans.pdf)]
 - [x] Factor Analysis and Principle Component Analysis [[Markdown](src/PCA.md)] [[PDF](pdf/PCA.pdf)]
-- [ ] Learning Theory [[Markdown]()]
+- [x] Learning Theory [[Markdown](src/LearningTheory.md)] [[PDF](pdf/LearningTheory.pdf)]
 
 ## QA
 
