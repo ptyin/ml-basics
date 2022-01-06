@@ -21,7 +21,7 @@ h_\theta(x)=g(\theta^Tx)=\frac1{(1+e^{-\theta^Tx})}
 $$
 
 - $\theta^Tx$ is called score. $h_\theta$ is called logistic regression.
-- $Pr(Y=1\vert X=x;\theta)=h(\theta)=\frac1{1+e^{-\theta^Tx}}$
+- $Pr(Y=1\vert X=x;\theta)=h_\theta(x)=\frac1{1+e^{-\theta^Tx}}$
 - $Pr(Y=0\vert X=x;\theta)=1-h_\theta(x)=\frac1{1+e^{\theta^Tx}}$
 
 ### Decision Boundary

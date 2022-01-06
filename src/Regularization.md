@@ -93,7 +93,7 @@ $$
     - Multivariate normal distribution $p(x ; \mu, \Sigma)=\frac{1}{(2 \pi)^{n / 2}|\Sigma|^{1 / 2}} \exp \left(-\frac{1}{2}(x-\mu)^{T} \Sigma^{-1}(x-\mu)\right)$
     - where $\mu\in\mathbb{R}^n$, $\Sigma\in\mathbb{R}^{n\times n}$ is symmetric and postitive semidefinite
 
-- $p(\theta)=\frac1{(\sqrt{2\pi}\lambda)^n}\exp(-\frac1{2\lambda}\theta^T\theta)\Rightarrow\log\ p(\theta)=n\mathrm{log}\frac1{\sqrt{2\pi}\lambda}-\frac{\theta^T\theta}{2\lambda^2}$
+- $p(\theta)=\frac1{(\sqrt{2\pi}\lambda)^n}\exp(-\frac1{2\lambda^2}\theta^T\theta)\Rightarrow\log\ p(\theta)=n\mathrm{log}\frac1{\sqrt{2\pi}\lambda}-\frac{\theta^T\theta}{2\lambda^2}$
 - $\theta_{MAP}=\mathrm{arg}\mathop{\mathrm{min}}\limits_\theta\left\{\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2+\frac{\theta^T\theta}{2\lambda^2}\right\}$
 
 #### 3. MLE vs MAP
