@@ -25,7 +25,7 @@ Lagrangian problem is:
 $$
 \begin{aligned}
 &\left\{
-\begin{array}{l}
+\begin{array}{ll}
 F=-\sum_{y \in \mathcal{Y}} c_{y} \log p_{y}+\lambda(\sum_{y \in \mathcal{Y}} p_{y}-1)-\sum_{y\in\mathcal{Y}} \mu_yp_y\\
 \mu_y\ge0 & \forall y\in \mathcal Y
 \end{array}
