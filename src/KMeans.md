@@ -2,14 +2,14 @@
 
 ## Clustering
 
-- Given: $N$ unlabeled examples $\{x_1, · · · , x_N\}$ no. of desired partitions $K$.
+- Given: $N$ unlabeled examples $\{x_1,\cdots, x_N\}$ and number of desired partitions $K$.
 - Goal: : Group the examples into $K$ “homogeneous” partitions.
 
 > Def.
 >
 > Given a set of observations $X = \{x_1, x_2, · · · , x_N\} (x_i\in\mathbb{R}^D)$, partition the $N$ observations into $K$ sets ($K ≤ N$) $\{\mathcal{C}_k\}_{k=1,··· ,K}$ such that the sets minimize the within-cluster sum of squares:
 > $$
-> \arg\min_{\mathcal{C}_k}\sum_{i=1}^k\sum_{x\in\mathcal{C}_i}\vert\vert x-\mu_i\vert\vert^2
+> \{\mathcal{C}_k\}=\arg\min_{\{\mathcal{C}_k\}}\sum_{i=1}^K\sum_{x\in\mathcal{C}_i}\vert\vert x-\mu_i\vert\vert^2
 > $$
 > where $\mu$ is the mean of points in set $\mathcal{C_i}$.
 

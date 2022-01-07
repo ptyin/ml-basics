@@ -72,10 +72,10 @@ $$
 
 - Transformation to binary 
     - One-vs.-rest (OvR, train a single classifier per class, with the samples of that class as positive samples and all other samples as negative ones)
-        - $y^*=\mathop{\mathrm{argmax}}\limits_kf_k(x)$
-        - $f_k(x)$ implies hight robability that $x$ is in class $k$.
+        - $y^*=\arg \max\limits_kf_k(x)$
+        - $f_k(x)$ implies hight probability that $x$ is in class $k$.
     - One-vs.-one (OvO, to train $K(K −1)/2$ binary classifiers)
-        - $y^*=\mathop{\mathrm{argmax}}\limits_s(\sum_tf_{s,t}(x))$
+        - $y^*=\arg\max\limits_s(\sum_tf_{s,t}(x))$
         - $f_{s,t}(x)$ implies that label $s$ has higher probability than label $t$.
 - Extension from binary 
 - Hierarchical classification

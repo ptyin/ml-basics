@@ -44,10 +44,10 @@ $$
 -  The Lagrangian problem for SVM 
 
 $$
-\min_{\omega,b,\alpha}\mathcal L(\omega, b, \alpha)=\frac12||\omega||^2+\sum_{i=1}^m\alpha_i(1-y^{(i)}(\omega^Tx^{(i)}+b))
+\min_{\omega,b}\max_{\alpha}\mathcal L(\omega, b, \alpha)=\frac12||\omega||^2+\sum_{i=1}^m\alpha_i(1-y^{(i)}(\omega^Tx^{(i)}+b))
 $$
 
-- The Lagrangian dual problem for SVM is $\max_\alpha\mathcal{G}(\alpha)=\inf_{\omega,b}\mathcal{L}(\omega,b,\alpha)$
+- The Lagrangian dual problem for SVM is $\max_\alpha\mathcal{G}(\alpha)=\max_\alpha\inf_{\omega,b}\mathcal{L}(\omega,b,\alpha)$
 
 $$
 \begin{array}{ll}
