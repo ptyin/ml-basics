@@ -2,7 +2,7 @@
 
 ## 1. Overfitting
 
-- Underfitting, or high bias, is when the form of our hypothesis function h maps **poorly** to the trend of the data.
+- Underfitting, or high bias, is when the form of our hypothesis function $h$ maps **poorly** to the trend of the data.
 - Overfitting, or high variance, is caused by a hypothesis function that fits the available data but does not generalize well to predict new data.
 
 ### Addressing
@@ -33,14 +33,17 @@ $$
 
 > Proof.
 > $$
-> \left\{
+> \begin{array}{lc}
+> &\left\{
 > \begin{array}{lll}
 > \frac\partial{\partial\theta_j}J(\theta)=\frac1m\sum_{k=1}^m(\theta^Tx^{(k)}-y^{(k)})x_j^{(k)}  && (j=0)\\
 > \frac\partial{\partial\theta_j}J(\theta)=\frac1m\sum_{k=1}^m(\theta^Tx^{(k)}-y^{(k)})x_j^{(k)}+\frac\lambda m\theta_j  && (j\in N^+)
 > \end{array}
 > \right.
-> \\ \Rightarrow
+> \\\\
+> \Rightarrow &
 > \nabla_\theta J(\theta)=\frac1 m(X^TX\theta-X^T y)+\frac\lambda mL\theta
+> \end{array}
 > $$
 
 ## 3. Regularized Logistic Regression
@@ -68,14 +71,14 @@ $$
 
 - Likelihood: $L(\theta)=p(D;\theta)=\prod_{i=1}^mp(d^{(i)};\theta)$
 - MLE typically maximizes the **log-likelihood** $l(\theta)$.
-- $\theta_{MLE}=\mathop{\mathrm{arg}}\mathop{\mathrm{max}}\limits_\theta\ \sum_{i=1}^m\mathrm{log}p(d^{(i)};\theta)$
+- $\theta_{MLE}=\arg\max_\theta\ \sum_{i=1}^m\mathrm{log}p(d^{(i)};\theta)$
 
 ### Maximum-a-Posteriori Estimation (MAP)
 
 - Posterior probability of $\theta$ is $p(\theta\vert D)=\frac{p(\theta)p(D\vert\theta)}{p(D)}$
 - $p(\theta)$ is prior prbability of $\theta$, where $p(D)$ is probability of the data.
 - MAP usually maximizes the **log** of the posteriori probability
-- $\theta_{MAP}=\mathop{\mathrm{arg}}\mathop{\mathrm{max}}\limits_\theta\ \left(\mathrm{log}p(\theta)+\sum_{i=1}^m\mathrm{log}p(d^{(i)}\vert\theta)\right)$
+- $\theta_{MAP}=\arg\max_\theta\ \left(\mathrm{log}p(\theta)+\sum_{i=1}^m\mathrm{log}p(d^{(i)}\vert\theta)\right)$
 
 ### Linear Regression
 
@@ -85,7 +88,7 @@ $$
     - Normal Distribution $p(x ; \mu, \sigma)=\frac{1}{\left(2 \pi \sigma^{2}\right)^{1 / 2}} \exp \left(-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}\right)$
 
 - $p(d^{(i)};\theta)={\frac {1}{\sigma {\sqrt {2\pi }}}}\;\exp({-{\frac 1{2\sigma ^{2}}(y^{(i)}-\theta^Tx^{(i)})^2}})\Rightarrow\log p(d^{(i)};\theta)=\log\frac1{\sigma\sqrt{2\pi}}-\frac1{2\sigma^2}(y^{(i)}-\theta x^{(i)})^2$
-- $\theta_{MLE}=\mathrm{arg}\mathop{\mathrm{min}}\limits_\theta\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$
+- $\theta_{MLE}=\arg\min_\theta\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$
 
 #### 2. MAP
 
@@ -94,7 +97,7 @@ $$
     - where $\mu\in\mathbb{R}^n$, $\Sigma\in\mathbb{R}^{n\times n}$ is symmetric and postitive semidefinite
 
 - $p(\theta)=\frac1{(\sqrt{2\pi}\lambda)^n}\exp(-\frac1{2\lambda^2}\theta^T\theta)\Rightarrow\log\ p(\theta)=n\mathrm{log}\frac1{\sqrt{2\pi}\lambda}-\frac{\theta^T\theta}{2\lambda^2}$
-- $\theta_{MAP}=\mathrm{arg}\mathop{\mathrm{min}}\limits_\theta\left\{\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2+\frac{\theta^T\theta}{2\lambda^2}\right\}$
+- $\theta_{MAP}=\arg\min_\theta\left\{\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2+\frac{\theta^T\theta}{2\lambda^2}\right\}$
 
 #### 3. MLE vs MAP
 
@@ -103,4 +106,17 @@ $$
 
 ### Logistic Regression
 
-Similar conclusion as above. 
+### 1. MLE
+
+- Suppose $p(d^{(i)};\theta)=h_\theta(y^{(i)}x^{(i)})=\frac1{1+\exp(-y^{(i)}\theta^T x^{(i)})}\Rightarrow\log p(d^{(i)};\theta)=-\log(1+\exp(-y^{(i)}\theta^Tx^{(i)}))$
+- $\theta_{MLE}=\arg\min_\theta\sum_{i=1}^m\log(1+\exp(-y^{(i)}\theta^Tx^{(i)}))$
+
+### 2. MAP
+
+- Suppose $\theta\sim\mathcal{N}(0,\lambda^2I)$
+- $\theta_{MAP}=\arg\min_\theta\left\{\sum_{i=1}^m(\log(1+\exp(-y^{(i)}\theta^Tx^{(i)}))+\frac{\theta^T\theta}{2\lambda^2}\right\}$
+
+#### 3. MLE vs MAP
+
+- Similar conclusion as linear regression. 
+

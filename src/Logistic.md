@@ -40,11 +40,11 @@ $$
 p(y\vert x;\theta)=\frac1{1+exp(-y\theta^Tx)},\text{where}\ y\in\{-1,1\}\ \text{instead of}\ y\in\{0,1\},
 $$
 
-- **Maximize** the log likelihood $\begin{aligned}L(\theta)&=\prod_{i=1}^mp(y\vert x;\theta) \\\end{aligned}$
-- $l(\theta)=\mathrm{log}L(\theta)=\sum_{i=1}^m(y^{(i)}\mathrm{log}h_\theta(x^{(i)})+(1-y^{(i)})\mathrm{log}(1-h_\theta(x^{(i)})))$, still assume $y\in\{-1,1\}$
+- **Maximize** the log likelihood $\ell(\theta)=\log L(\theta)=\prod_{i=1}^mp(y\vert x;\theta) \\$
+- $\ell(\theta)=\mathrm{log}L(\theta)=\sum_{i=1}^m(y^{(i)}\mathrm{log}h_\theta(x^{(i)})+(1-y^{(i)})\mathrm{log}(1-h_\theta(x^{(i)})))$, still assume $y\in\{-1,1\}$
 
 $$
-\frac{\partial}{\partial \theta_j}l(\theta)=\sum_{i=1}^m\frac{y^{(i)}-h_\theta(x^{(i)})}{h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))}\cdot\frac{\partial h_\theta(x^{(i)})}{\partial \theta_j}=\sum_{i=1}^m(y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}
+\frac{\partial}{\partial \theta_j}\ell(\theta)=\sum_{i=1}^m\frac{y^{(i)}-h_\theta(x^{(i)})}{h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))}\cdot\frac{\partial h_\theta(x^{(i)})}{\partial \theta_j}=\sum_{i=1}^m(y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}
 $$
 
 ## 3. Newton's Method
@@ -68,7 +68,7 @@ $$
 \theta\leftarrow\theta-H^{-1}\nabla_\theta l(\theta),\ \text{where}\ H_{i,j}=\frac{\partial^2l(\theta)}{\partial\theta_i\partial\theta_j}
 $$
 
-### Multiclass Classification
+## 4. Multiclass Classification
 
 - Transformation to binary 
     - One-vs.-rest (OvR, train a single classifier per class, with the samples of that class as positive samples and all other samples as negative ones)
@@ -80,11 +80,11 @@ $$
 - Extension from binary 
 - Hierarchical classification
 
-## 4. Softmax Regression
+### Softmax Regression
 
 $$
 \begin{aligned}
-l(\theta)&=\sum_{i=1}^m\mathrm{log}p(y^{(i)}\vert x^{(i)};\theta) \\
+\ell(\theta)&=\sum_{i=1}^m\mathrm{log}p(y^{(i)}\vert x^{(i)};\theta) \\
 &=\sum_{i=1}^m\mathrm{log}\prod_{k=1}^K\left(\frac{exp(\theta^{(k)^T}x^{(i)})}{\sum_{k'=1}^Kexp(\theta^{(k')^T}x^{(i)})}\right)^{\mathbb{I}(y^{(i)}=k)}
 \end{aligned}
 $$

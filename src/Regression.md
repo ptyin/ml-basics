@@ -1,6 +1,6 @@
 # Linear Regression
 
-## Basics
+## 1. Basics
 
 - Linear hypothesis: $h(x)=\theta_1x+\theta_0,\ \theta_i(i=1,2\text{ for 2D cases})$.
 - cost function: 
@@ -14,17 +14,15 @@ $$
 
 - best choice for $\theta=\arg\min\limits_\theta\ J(\theta)$
 
-## Gradient Descent (GD) Algorithm
+## 2. Gradient Descent (GD) Algorithm
 
 > Algorithm.
 >
-> ```pseudocode
-> Given a starting point \theta in dom J
-> while converence criterion is satisfied
-> 	Calculate gradient \nabla J(\theta)
-> 	Update \theta \leftarrow \theta - \alpha\nabla J(\theta)
-> ```
->
+> 1. Given a starting point $\theta$ in dom J
+> 2. while converence criterion is satisfied
+>     1. Calculate gradient $\nabla$ J($\theta$)
+>     2. Update $\theta \leftarrow \theta - \alpha\nabla J(\theta)$
+> 
 > $\theta$ Is usually initialized randomly, and $\alpha$ is so-called learning rate.
 
 - For linear regression,
@@ -40,12 +38,18 @@ $$
 \end{array}
 $$
 
-- Another commonly used form $J(\theta)=\frac1{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2$.
-- $m$ is introduced to scale the objective function to deal with differently sized training set.
-
-## Matrix Form
+- Another commonly used form 
 
 $$
+J(\theta)=\frac1{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2
+$$
+
+- where $m$ is introduced to scale the objective function to deal with differently sized training set.
+
+## 3. Matrix Form
+
+$$
+\begin{array}{c}
 X=\left[\begin{array}{c}
 (x^{(1)})^T \\
 \vdots \\
@@ -56,6 +60,7 @@ y^{(1)} \\
 y^{(m)}
 \end{array}\right] \\
 J(\theta)=\frac12\sum_{i=1}^m{(\theta^Tx^{(i)}-y^{(i)})^2}=\frac12(X\theta-Y)^T(X\theta-Y)
+\end{array}
 $$
 
 - Minimize $J(\theta)=\frac12(Y-X\theta)^T(Y-X\theta)$
@@ -70,9 +75,9 @@ $$
 \end{aligned}
 $$
 
-- > Theorem. **Normal Equation**
-    >
-    > The matrix $A^TA$ is invertible if and only if the columns of $A$ are linearly independent. In this case, there exists only one least-squares solution.
-    > $$
-    > \theta=(X^TX)^{-1}X^TY
-    > $$
+> Theorem. **Normal Equation**
+  >
+  > The matrix $A^TA$ is invertible if and only if the columns of $A$ are linearly independent. In this case, there exists only one least-squares solution.
+  > $$
+  > \theta=(X^TX)^{-1}X^TY
+  > $$

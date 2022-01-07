@@ -68,16 +68,20 @@ $$
 
 > Theorem.
 > $$
-> p(y)=\frac{count(y)}{m},p_j(x\mid y)=\frac{count_j(x\mid y)}{count(y)} \\
-> count(y)=\sum_{i=1}^m1(y^{(i)}=y),\ count_j(x\mid y)=\sum_{i=1}^m1(y^{(i)}=y\wedge x_j^{(i)}=x), \\
-> \forall y=0,1,\forall x=0,1.
+> \begin{array}{cc}
+> p(y)=\frac{count(y)}{m}, & p_j(x\mid y)=\frac{count_j(x\mid y)}{count(y)} \\
+> count(y)=\sum_{i=1}^m1(y^{(i)}=y), & \ count_j(x\mid y)=\sum_{i=1}^m1(y^{(i)}=y\wedge x_j^{(i)}=x), \\
+> \forall y=0,1, & \forall x=0,1.
+> \end{array}
 > $$
 
 ### Classification by NB
 
 $$
+\begin{array}{l}
 \because P(Y=y\mid X_1=\tilde{x_1},\cdots,X_n=\tilde{x_n})=\frac{P(X_1=\tilde{x_1},\cdots,X_n=\tilde{x_n}\mid Y=y)P(Y=y)}{P(X_1=\tilde{x_1},\cdots,X_n=\tilde{x_n})} \\
 \therefore \arg \max _{y \in\{0,1\}}\left(p(y) \prod_{j=1}^{n} p_{j}\left(\tilde{x}_{j} \mid y\right)\right)
+\end{array}
 $$
 
 ### Laplace Smoothing
@@ -139,10 +143,10 @@ $$
 - Laplace smoothing
 
 $$
-\begin{gathered}
+\begin{array}{l}
 \psi(y)=\frac{\sum_{i=1}^{m} \mathbf{1}\left(y^{(i)}=y\right)+1}{m+k} \\
 \psi(t \mid y)=\frac{\sum_{i=1}^{m} \mathbf{1}\left(y^{(i)}=y\right) \operatorname{count}^{(i)}(t)+1}{\sum_{i=1}^{m} \mathbf{1}\left(y^{(i)}=y\right) \sum_{t=1}^{v} \operatorname{count}^{(i)}(t)+v}
-\end{gathered}
+\end{array}
 $$
 
 ## Expectation Maximization (EM) Algorithm
@@ -180,8 +184,10 @@ $$
 - **Since $\mathrm{log}(·)$ is a concave function, according to Jensen’s inequality, we have**
 
 $$
+\begin{array}{l}
 \because \mathrm{log}\left(E\left[\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}\right]\right)\ge E\left[\mathrm{log}\left(\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}\right)\right] \\
 \therefore \ell(\theta)\ge\sum_{i=1}^m\sum_{z^{(i)}\in\Omega}Q_i(z^{(i)})\mathrm{log}\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}
+\end{array}
 $$
 
 - Tighten the lower bound, the equality holds when $\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}=c$, where $c$ is a constant.
@@ -211,7 +217,7 @@ $$
 #### Applying EM to NB
 
 - (E-step) For each $i=1, \cdots, m$ and $y=1, \cdots, k$ set
-    
+  
     - Relabel $y$ by $Q_i(y)$.
     
     $$
