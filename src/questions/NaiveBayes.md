@@ -14,23 +14,45 @@ for $\forall y \in \mathcal{Y}$, where $N=\sum_{y \in \mathcal{Y}} c_{y} .$ (Hin
 #### Answer:
 
 $$
-\begin{array}{l}
-\max \sum_{y \in \mathcal{Y}} c_{y} \log p_{y} \\
-\text { s.t. } \sum_{y \in \mathcal{Y}} p_{y}=1 \\
-p(y) \geq 0, \forall y \in \mathcal{Y}
-\end{array}
+\begin{aligned}
+\max & \sum_{y \in \mathcal{Y}} c_{y} \log p_{y} \\
+\text { s.t. } & \sum_{y \in \mathcal{Y}} p_{y}=1 \\
+&p_y \geq 0, & \forall y \in \mathcal{Y}
+\end{aligned}
 $$
 
 Lagrangian problem is:
 $$
-\begin{array}{c}
-F=\sum_{y \in \mathcal{Y}} c_{y} \log p_{y}+\lambda\left(\sum_{y \in \mathcal{Y}} p_{y}-1\right)\\
-\frac{\partial F}{\partial \lambda}=\sum_{y \in \mathcal{Y}} p_{y}-1\\
-\frac{\partial F}{\partial p_{y}}=\frac{c_{y}}{p_{y}}+\lambda\\
-\lambda=-\sum_{y \in \mathcal{Y}} c_{y}, p_{y}=\frac{c_{y}}{\sum_{y \in \mathcal{Y}} c_{y}}\\
-p_{y}=\frac{c_{y}}{N}
+\begin{aligned}
+&\left\{
+\begin{array}{l}
+F=-\sum_{y \in \mathcal{Y}} c_{y} \log p_{y}+\lambda(\sum_{y \in \mathcal{Y}} p_{y}-1)-\sum_{y\in\mathcal{Y}} \mu_yp_y\\
+\mu_y\ge0 & \forall y\in \mathcal Y
+\end{array}
+\right.
+\\ \\
+\Rightarrow & \left\{
+\begin{array}{ll}
+\frac{\partial F}{\partial p_{y}}=-\frac{c_{y}}{p_{y}}+\lambda -\mu_y=0 & \forall y\in \mathcal Y\\
+\mu_yp_y=0 & \forall y\in\mathcal Y
+\end{array}
+\right.
+\end{aligned}
+$$
+
+- For $\lambda$, 
+
+$$
+\begin{array}{l}
+\because \mu_yp_y=0 \text{ and } c_y=\lambda p_y-\mu_yp_y \\
+\therefore c_y=\lambda p_y \Leftrightarrow p_y=\frac {c_y}{\lambda} \\
+\because \sum_{y\in\mathcal Y}p_y=1 \\
+\therefore \sum_{y\in\mathcal Y}p_y=\frac1\lambda\sum_{y\in\mathcal Y}c_y=1 \\
+\therefore \lambda=\sum_{y\in\mathcal Y}c_y
 \end{array}
 $$
+
+- Therefore, $p_y=\frac{c_y}{\lambda}=\frac{c_y}{\sum_{y\in\mathcal Y}c_y}$
 
 ### ( ii ) Using the above consequence, prove that, the maximum-likelihood estimates for Naive Bayes model are as follows:
 
@@ -44,38 +66,38 @@ $$
 
 #### Answer:
 
-We now prove the result in theorem 1. Our first step is to re-write the log-likelihood function in a way that makes direct use of "counts" taken from the training data:
+The first step is to re-write the log-likelihood function in a way that makes direct use of "counts" taken from the training data:
 $$
 \begin{aligned}
-L(\underline{\theta})=& \sum_{i=1}^{m} \log q\left(y_{i}\right)+\sum_{i=1}^{m} \sum_{j=1}^{n} \log q_{j}\left(x_{i, j} \mid y_{i}\right) \\
-=& \sum_{y \in \mathcal{Y}} \operatorname{count}(y) \log q(y) \\
-&+\sum_{j=1}^{n} \sum_{y \in \mathcal{Y}} \sum_{x \in\{-1,+1\}} \text { count }_{j}(x \mid y) \log q_{j}(x \mid y)
+l(\Omega)=& \sum_{i=1}^{m} \log p\left(y^{(i)}\right)+\sum_{i=1}^{m} \sum_{j=1}^{n} \log p_{j}\left(x_{j}^{(i)} \mid y^{(i)}\right) \\
+=& \sum_{y \in \mathcal{Y}} \operatorname{count}(y) \log p(y) \\
+&+\sum_{j=1}^{n} \sum_{y \in \mathcal{Y}} \sum_{x \in\{-1,+1\}} \text { count }_{j}(x \mid y) \log p_{j}(x \mid y)
 \end{aligned}
 $$
 where as before
 $$
 \begin{gathered}
-\operatorname{count}(y)=\sum_{i=1}^{m}\left[\left[y^{(i)}=y\right]\right] \\
-\operatorname{count}_{j}(x \mid y)=\sum_{i=1}^{m}\left[\left[y_{i}=y \text { and } x_{j}^{(i)}=x\right]\right]
+\operatorname{count}(y)=\sum_{i=1}^{m}1\left(y^{(i)}=y\right) \\
+\operatorname{count}_{j}(x \mid y)=\sum_{i=1}^{m}1\left(y^{(i)}=y \wedge x_{j}^{(i)}=x\right)
 \end{gathered}
 $$
 Consider first maximization of this function with respect to the $q(y)$ parameters. It is easy to see that the term
 $$
-\sum_{j=1}^{d} \sum_{y \in \mathcal{Y}} \sum_{x \in\{-1,+1\}} \operatorname{count}_{j}(x \mid y) \log q_{j}(x \mid y)
+\sum_{j=1}^{d} \sum_{y \in \mathcal{Y}} \sum_{x \in\{-1,+1\}} \operatorname{count}_{j}(x \mid y) \log p_{j}(x \mid y)
 $$
-does not depend on the $q(y)$ parameters at all. Hence to pick the optimal $q(y)$ parameters, we need to simply maximize
+does not depend on the $p(y)$ parameters at all. Hence to pick the optimal $p(y)$ parameters, we need to simply maximize
 $$
-\sum_{y \in \mathcal{Y}} \operatorname{count}(y) \log q(y)
+\sum_{y \in \mathcal{Y}} \operatorname{count}(y) \log p(y)
 $$
-subject to the constraints $q(y) \geq 0$ and $\sum_{y=1}^{k} q(y)=1$. But by the consequence of **( i )** , the values for $q(y)$ which maximize this expression under these constraints is simply
+Subject to the constraints $p(y) \geq 0$ and $\sum_{y=1}^{k} p(y)=1$, by the consequence of **( i )** , the values for $q(y)$ which maximize this expression under these constraints is simply
 $$
-q(y)=\frac{\operatorname{count}(y)}{\sum_{y=1}^{k} \operatorname{count}(y)}=\frac{\operatorname{count}(y)}{n}
+p(y)=\frac{\operatorname{count}(y)}{\sum_{y=1}^{k} \operatorname{count}(y)}=\frac{\operatorname{count}(y)}{n}
 $$
 By a similar argument, we can maximize each term of the form
 $$
-\sum_{x \in\{-1,+1\}} \text { count }_{j}(x \mid y) \log q_{j}(x \mid y)
+\sum_{x \in\{-1,+1\}} \text { count }_{j}(x \mid y) \log p_{j}(x \mid y)
 $$
 Applying **( i )**, we can get
 $$
-q_j(x\mid y)=\frac{\text{count}_j(x\mid y)}{\sum_{x\in\{-1,1\}}\text{count}_j(x\mid y)}=\frac{\text{count}_j(x\mid y)}{\text{count}(y)}
+p_j(x\mid y)=\frac{\text{count}_j(x\mid y)}{\sum_{x\in\{-1,1\}}\text{count}_j(x\mid y)}=\frac{\text{count}_j(x\mid y)}{\text{count}(y)}
 $$
